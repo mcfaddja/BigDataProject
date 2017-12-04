@@ -9,6 +9,7 @@ TCSS-551 : Big Data Analytics
 *Autumn 2017* 
 
 
+
 # Introduction
 
 ## Overview
@@ -91,26 +92,45 @@ We now examine the result of this
 head(houseDFo1)
 ```
 
-
-
-
-
-
-
-
-
-
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
-
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+The dates are now just strings of numbers with the format '*yyyymmdd*'; therefore, we can use the date conversion method from **_R_** to convert these dates.  
 
 ```{r}
-plot(cars)
+houseDFo1 <- transform(houseDFo1, date = as.Date(date, "%Y%m%d"))
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+To ensure that the conversion to dates happend properly, we will no check the column data types followed by looking at the first few rows of the data.
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+```{r}
+sapply(houseDFo1, class)
+head(houseDFo1)
+```
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+Since the results for the date conversions are as desired, we can now store the data in a final data frame followed by moving on to begining our analysis.
+
+```{r}
+houseDF <- houseDFo1
+```
+
+
+
+# Analysis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
