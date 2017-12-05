@@ -111,10 +111,36 @@ Since the results for the date conversions are as desired, we can now store the 
 houseDF <- houseDFo1
 ```
 
+We will also create a version of the data with the **ID** column stripped out.
+
+```{r}
+houseDFa <- houseDF[-c(1)]
+```
+
+
 
 
 # Analysis
 
+## Initial Analysis
+
+To begin our analysis, we will look at the basic statistics of every column (*except the date*).
+
+```{r}
+sapply(houseDFa[-c(1)], function(x) list(mean=mean(x), 
+                                         stdev=sd(x, na.rm=TRUE)))
+```
+
+```{r}
+library(nnet)
+test1 <- lm(price ~., data=houseDFa)
+summary(test1)
+```
+
+```{r}
+test2 <- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + waterfront + view + condition + grade + sqft_above + sqft_basement + lat + long, data = houseDFa)
+summary(test2)
+```
 
 
 
