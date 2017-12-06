@@ -142,8 +142,17 @@ test2 <- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + wat
 summary(test2)
 ```
 
+```{r}
+test <- nnet(price~.,houseDFa,family="multinomial",size=10,MaxNWts =1000000)
+```
 
+```{r}
+summary(test)
+```
 
+```{r}
+test0 <- multinom(price ~ ., houseDFa, MaxNWts=100000)
+```
 
 
 
