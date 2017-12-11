@@ -133,32 +133,9 @@ sapply(houseDFa[-c(1)], function(x) list(mean=mean(x),
 
 ```{r}
 library(nnet)
-test1 <- lm(price ~., data=houseDFa)
-summary(test1)
+modelA <- lm(price ~., data=houseDFa)
+summary(modelA)
 ```
-
-```{r}
-test2 <- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + waterfront + view + condition + grade + sqft_above + sqft_basement + lat + long, data = houseDFa)
-summary(test2)
-```
-
-```{r}
-test <- nnet(price~.,houseDFa,family="multinomial",size=10,MaxNWts =1000000)
-```
-
-```{r}
-summary(test)
-```
-
-```{r}
-test0 <- multinom(price ~ ., houseDFa, MaxNWts=100000)
-```
-
-
-
-
-
-
 
 
 
